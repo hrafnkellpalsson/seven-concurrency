@@ -17,9 +17,10 @@ class Philosopher extends Thread {
   private Random random;
   private int thinkCount;
 
-  public Philosopher(Chopstick left, Chopstick right) {
+  public Philosopher(Chopstick left, Chopstick right, int i) {
     this.left = left; this.right = right;
     random = new Random();
+    setName(String.format("Philosopher %s", i));
   }
 
   public void run() {
@@ -29,7 +30,7 @@ class Philosopher extends Thread {
         ++thinkCount;
         if (thinkCount % 10 == 0) {
           System.out.println(LocalTime.now());
-          System.out.format("Philosopher %s has thought %s times at %s\n", this, thinkCount, f.format(LocalTime.now()));
+          System.out.format("%s has thought %s times at %s\n", this, thinkCount, f.format(LocalTime.now()));
         }
         Thread.sleep(random.nextInt(50));     // Think for a while
         synchronized(left) {                    // Grab left chopstick

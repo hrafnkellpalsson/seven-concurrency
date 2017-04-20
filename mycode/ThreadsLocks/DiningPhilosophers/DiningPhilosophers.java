@@ -18,7 +18,7 @@ public class DiningPhilosophers {
     for (int i = 0; i < nPhilosophers; ++i)
       chopsticks[i] = new Chopstick(i);
     for (int i = 0; i < nPhilosophers; ++i) {
-      philosophers[i] = new Philosopher(chopsticks[i], chopsticks[(i + 1) % nPhilosophers]);
+      philosophers[i] = new Philosopher(chopsticks[i], chopsticks[(i + 1) % nPhilosophers], i);
       philosophers[i].start();
     }
     for (int i = 0; i < nPhilosophers; ++i)
